@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Card Demo</title>
+
+<style>
+:root {
+    --glass-blue: rgba(219, 235, 255, 0.14);
+    --border: rgba(255, 255, 255, 0.28);
+    --soft-blue: #dbeeff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #ffffff;
+    background:
+        linear-gradient(
+            rgba(14,47,79,0.55),
+            rgba(14,47,79,0.75)
+        ),
+        url("https://images.unsplash.com/photo-1543589077-47d81606c1bf");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.wrapper {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 18px 120px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.header h1 {
+    font-size: clamp(2.2rem, 6vw, 2.8rem);
+    font-weight: 600;
+    margin-bottom: 10px;
+    word-break: keep-all;
+}
+
+.header p {
+    font-size: 1rem;
+    color: var(--soft-blue);
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    margin-bottom: 80px;
+}
+
+.image-card {
+    height: 210px;
+    border-radius: 18px;
+    background: var(--glass-blue);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    overflow: hidden;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section {
+    background: var(--glass-blue);
+    backdrop-filter: blur(6px);
+    border-radius: 22px;
+    padding: 32px 28px;
+    margin: 0 auto 42px;
+    border: 1px solid var(--border);
+    max-width: 760px;
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+.section.feelings {
+    font-size: 1.1rem;
+}
+
+.section.verse {
+    font-size: 1.02rem;
+    font-style: italic;
+    color: var(--soft-blue);
+}
+
+.footer {
+    margin-top: 90px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--soft-blue);
+}
+
+/* Snow */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="header">
+        <h1>Merry Christmas, [Her Name] 🎄</h1>
+        <p>A small reminder that meaningful connections still matter</p>
+    </div>
+
+    <div class="images">
+        <div class="image-card">
+            <img src="https://via.placeholder.com/600x400?text=Her+Photo" alt="Her photo">
+        </div>
+        <div class="image-card">
+            <img src="https://via.placeholder.com/600x400?text=A+Memory" alt="A memory">
+        </div>
+    </div>
+
+    <div class="section">
+        When we first met, I didn’t realize how meaningful that moment would become.
+        Different lives, different places — yet our paths crossed in a way that stayed with me.
+        Even with distance, some connections don’t disappear. They quietly remain.
+    </div>
+
+    <div class="section feelings">
+        There are people who enter your life without noise, but leave something lasting behind.
+        Conversations, shared thoughts, and simple moments can mean more than we expect.
+        This is just a small reminder of appreciation, gratitude, and care.
+    </div>
+
+    <div class="section verse">
+        “Let all that you do be done in love.”  
+        <br><br>
+        — 1 Corinthians 16:14
+    </div>
+
+    <div class="section" style="text-align:center; font-size:1rem;">
+        Some moments don’t fade with distance — they simply travel.
+    </div>
+
+    <div class="footer">
+        Demo · Digital Christmas Card
+    </div>
+
+</div>
+
+<script>
+function createSnowflake() {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.textContent = Math.random() > 0.5 ? "❄" : "✦";
+    snowflake.style.left = Math.random() * 100 + "vw";
+    snowflake.style.fontSize = Math.random() * 12 + 12 + "px";
+    snowflake.style.animationDuration = Math.random() * 8 + 10 + "s";
+    document.body.appendChild(snowflake);
+    setTimeout(() => snowflake.remove(), 18000);
+}
+setInterval(createSnowflake, 300);
+</script>
+
+</body>
+</html>
