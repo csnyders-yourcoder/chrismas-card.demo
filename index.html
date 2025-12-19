@@ -6,70 +6,70 @@
 <title>Christmas Card Demo</title>
 
 <style>
-:root {
-    --glass-blue: rgba(219, 235, 255, 0.14);
-    --border: rgba(255, 255, 255, 0.28);
-    --soft-blue: #dbeeff;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: "Inter", "Segoe UI", sans-serif;
-    color: #ffffff;
     background:
-        linear-gradient(
-            rgba(14,47,79,0.55),
-            rgba(14,47,79,0.75)
-        ),
+        linear-gradient(rgba(12,40,66,0.7), rgba(12,40,66,0.85)),
         url("https://images.unsplash.com/photo-1543589077-47d81606c1bf");
     background-size: cover;
     background-attachment: fixed;
-}
-
-.wrapper {
-    max-width: 900px;
-    margin: auto;
-    padding: 70px 18px 120px;
-}
-
-.header {
+    color: white;
     text-align: center;
-    margin-bottom: 70px;
+    overflow-x: hidden;
 }
 
-.header h1 {
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1.2s ease;
+}
+
+.section {
+    max-width: 780px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(6px);
+    border-radius: 22px;
+    line-height: 1.8;
+}
+
+#countdown {
+    font-size: 2.2rem;
+    margin-top: 40vh;
+}
+
+#tree {
+    font-size: 4rem;
+    margin-top: 30px;
+}
+
+h1 {
     font-size: clamp(2.2rem, 6vw, 2.8rem);
-    font-weight: 600;
-    margin-bottom: 10px;
-    word-break: keep-all;
+    margin: 30px 10px 10px;
 }
 
-.header p {
+.subtitle {
+    color: #dbeeff;
     font-size: 1rem;
-    color: var(--soft-blue);
-    max-width: 90%;
-    margin: 0 auto;
-    line-height: 1.5;
 }
 
 .images {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 26px;
-    margin-bottom: 80px;
+    margin: 60px 20px;
 }
 
 .image-card {
     height: 210px;
     border-radius: 18px;
-    background: var(--glass-blue);
-    backdrop-filter: blur(6px);
-    border: 1px solid var(--border);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
     overflow: hidden;
 }
 
@@ -78,112 +78,84 @@ body {
     height: 100%;
     object-fit: cover;
 }
-
-.section {
-    background: var(--glass-blue);
-    backdrop-filter: blur(6px);
-    border-radius: 22px;
-    padding: 32px 28px;
-    margin: 0 auto 42px;
-    border: 1px solid var(--border);
-    max-width: 760px;
-    font-size: 1.05rem;
-    line-height: 1.85;
-}
-
-.section.feelings {
-    font-size: 1.1rem;
-}
-
-.section.verse {
-    font-size: 1.02rem;
-    font-style: italic;
-    color: var(--soft-blue);
-}
-
-.footer {
-    margin-top: 90px;
-    text-align: center;
-    font-size: 0.95rem;
-    color: var(--soft-blue);
-}
-
-/* Snow */
-.snowflake {
-    position: fixed;
-    top: -10px;
-    color: white;
-    opacity: 0.8;
-    pointer-events: none;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<!-- COUNTDOWN -->
+<div id="countdown"></div>
 
-    <div class="header">
-        <h1>Merry Christmas, [Her Name] 🎄</h1>
-        <p>A small reminder that meaningful connections still matter</p>
+<!-- TREE -->
+<div id="tree" class="hidden">🎄</div>
+
+<!-- HEADER -->
+<div id="header" class="hidden">
+    <h1>Merry Christmas, [Her Name]</h1>
+    <div class="subtitle">A small reminder that meaningful connections still matter</div>
+</div>
+
+<!-- IMAGES -->
+<div class="images hidden" id="images">
+    <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Her+Photo">
     </div>
-
-    <div class="images">
-        <div class="image-card">
-            <img src="https://via.placeholder.com/600x400?text=Her+Photo" alt="Her photo">
-        </div>
-        <div class="image-card">
-            <img src="https://via.placeholder.com/600x400?text=A+Memory" alt="A memory">
-        </div>
+    <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=A+Memory">
     </div>
+</div>
 
-    <div class="section">
-        When we first met, I didn’t realize how meaningful that moment would become.
-        Different lives, different places — yet our paths crossed in a way that stayed with me.
-        Even with distance, some connections don’t disappear. They quietly remain.
-    </div>
+<!-- MESSAGE BLOCKS -->
+<div class="section hidden" id="m1">
+When we first met, I didn’t realize how meaningful that moment would become.
+Different lives, different places — yet our paths crossed in a way that stayed with me.
+</div>
 
-    <div class="section feelings">
-        There are people who enter your life without noise, but leave something lasting behind.
-        Conversations, shared thoughts, and simple moments can mean more than we expect.
-        This is just a small reminder of appreciation, gratitude, and care.
-    </div>
+<div class="section hidden" id="m2">
+There are people who enter your life quietly, but leave something lasting behind.
+This is a small reminder of appreciation, gratitude, and care.
+</div>
 
-    <div class="section verse">
-        “Let all that you do be done in love.”  
-        <br><br>
-        — 1 Corinthians 16:14
-    </div>
+<div class="section hidden" id="m3">
+“Let all that you do be done in love.”  
+<br><br>— 1 Corinthians 16:14
+</div>
 
-    <div class="section" style="text-align:center; font-size:1rem;">
-        Some moments don’t fade with distance — they simply travel.
-    </div>
-
-    <div class="footer">
-        Demo · Digital Christmas Card
-    </div>
-
+<div class="section hidden" id="m4">
+Some moments don’t fade with distance — they simply travel.
 </div>
 
 <script>
-function createSnowflake() {
-    const snowflake = document.createElement("div");
-    snowflake.classList.add("snowflake");
-    snowflake.textContent = Math.random() > 0.5 ? "❄" : "✦";
-    snowflake.style.left = Math.random() * 100 + "vw";
-    snowflake.style.fontSize = Math.random() * 12 + 12 + "px";
-    snowflake.style.animationDuration = Math.random() * 8 + 10 + "s";
-    document.body.appendChild(snowflake);
-    setTimeout(() => snowflake.remove(), 18000);
+/* Countdown */
+let count = 5;
+const countdownEl = document.getElementById("countdown");
+
+const timer = setInterval(() => {
+    countdownEl.textContent = `Opening in ${count}…`;
+    count--;
+    if (count < 0) {
+        clearInterval(timer);
+        countdownEl.style.display = "none";
+        startReveal();
+    }
+}, 1000);
+
+/* Reveal sequence */
+function reveal(id, delay) {
+    setTimeout(() => {
+        document.getElementById(id).classList.add("show");
+    }, delay);
 }
-setInterval(createSnowflake, 300);
+
+function startReveal() {
+    reveal("tree", 300);
+    reveal("header", 1600);
+    reveal("images", 3000);
+    reveal("m1", 5000);
+    reveal("m2", 7000);
+    reveal("m3", 9000);
+    reveal("m4", 11000);
+}
 </script>
 
 </body>
