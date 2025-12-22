@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christmas Card Demo</title>
+<title>Merry Christmas ❤️</title>
 
 <style>
 body {
@@ -78,6 +78,15 @@ h1 {
     height: 100%;
     object-fit: cover;
 }
+
+/* Small floating accent */
+.corner-love {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.4rem;
+    opacity: 0.6;
+}
 </style>
 </head>
 
@@ -91,39 +100,69 @@ h1 {
 
 <!-- HEADER -->
 <div id="header" class="hidden">
-    <h1>Merry Christmas, [Her Name]</h1>
-    <div class="subtitle">A small reminder that meaningful connections still matter</div>
+    <h1>Merry Christmas, [[Her Name]]</h1>
+    <div class="subtitle">
+        A small reminder of love, faith, and the moments that shaped our year
+    </div>
 </div>
 
 <!-- IMAGES -->
 <div class="images hidden" id="images">
     <div class="image-card">
-        <img src="married-couple-holding-hands.jpg">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
     </div>
     <div class="image-card">
-        <img src="premium_photo-1700353612860-bd8ab8d71f05.jpeg">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
     </div>
 </div>
 
-<!-- MESSAGE BLOCKS -->
+<!-- MESSAGE SECTIONS -->
+
 <div class="section hidden" id="m1">
 When we first met, I didn’t realize how meaningful that moment would become.
 Different lives, different places — yet our paths crossed in a way that stayed with me.
 </div>
 
+<div class="section hidden" id="highlight">
+<b>Your highlight of this year:</b><br><br>
+[[Her favorite moment of the year]]
+</div>
+
 <div class="section hidden" id="m2">
-There are people who enter your life quietly, but leave something lasting behind.
-This is a small reminder of appreciation, gratitude, and care.
+There are people who enter your life quietly,
+but leave something lasting behind.
+<br><br>
+This is my reminder of appreciation, gratitude, and care — for you.
 </div>
 
 <div class="section hidden" id="m3">
-“Let all that you do be done in love.”  
-<br><br>— 1 Corinthians 16:14
+<b>Your favorite verse:</b><br><br>
+“[[Her favorite Bible verse]]”  
+<br><br>
+— [[Book & Verse]]
+</div>
+
+<div class="section hidden" id="oneword">
+<b>One word that describes us:</b><br><br>
+<span style="font-size:1.8rem;">[[One Word]]</span><br><br>
+And somehow, it says everything.
 </div>
 
 <div class="section hidden" id="m4">
-Some moments don’t fade with distance — they simply travel.
+Looking ahead, I hope the coming year brings us
+more growth, more laughter, and more moments that feel like home.
+<br><br>
+No matter where life leads, I’m grateful that our paths met —
+and that we get to keep choosing each other.
 </div>
+
+<div class="section hidden" id="signoff">
+With all my love,<br>
+<b>[[Your Name]]</b><br><br>
+🎄 2025
+</div>
+
+<div class="corner-love">❤️ ✨</div>
 
 <script>
 /* Countdown */
@@ -152,9 +191,12 @@ function startReveal() {
     reveal("header", 1600);
     reveal("images", 3000);
     reveal("m1", 5000);
-    reveal("m2", 7000);
-    reveal("m3", 9000);
-    reveal("m4", 11000);
+    reveal("highlight", 6500);
+    reveal("m2", 8000);
+    reveal("m3", 10000);
+    reveal("oneword", 12000);
+    reveal("m4", 14000);
+    reveal("signoff", 16500);
 }
 </script>
 
