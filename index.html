@@ -79,7 +79,26 @@ h1 {
     object-fit: cover;
 }
 
-/* Small floating accent */
+/* Music button */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.18);
+    border: none;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+}
+
+.music-btn:hover {
+    background: rgba(255,255,255,0.28);
+}
+
+/* Corner accent */
 .corner-love {
     position: fixed;
     bottom: 20px;
@@ -91,6 +110,12 @@ h1 {
 </head>
 
 <body>
+
+<!-- MUSIC BUTTON -->
+<button class="music-btn" id="musicBtn">▶ Play our song</button>
+<audio id="bgMusic" loop>
+    <source src="[[PASTE SONG URL HERE]]" type="audio/mpeg">
+</audio>
 
 <!-- COUNTDOWN -->
 <div id="countdown"></div>
@@ -165,6 +190,22 @@ With all my love,<br>
 <div class="corner-love">❤️ ✨</div>
 
 <script>
+/* Music toggle */
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+let isPlaying = false;
+
+musicBtn.addEventListener("click", () => {
+    if (!isPlaying) {
+        music.play();
+        musicBtn.textContent = "⏸ Pause music";
+    } else {
+        music.pause();
+        musicBtn.textContent = "▶ Play our song";
+    }
+    isPlaying = !isPlaying;
+});
+
 /* Countdown */
 let count = 5;
 const countdownEl = document.getElementById("countdown");
